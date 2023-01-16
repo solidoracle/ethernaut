@@ -2,7 +2,7 @@
 
 pragma solidity ^0.8.10;
 
-import '../BaseLevel.sol';
+import '../../core/BaseLevel.sol';
 import './Fallout.sol';
 
 contract FalloutFactory is Level {

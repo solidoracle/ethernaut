@@ -6,6 +6,7 @@ import "../src/core/Ethernaut.sol";
 import "./utils/vm.sol";
 
 contract FallbackTest is DSTest {
+    // Cheat codes are state changing methods
     Vm vm = Vm(address(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D));
     Ethernaut ethernaut;
     address attacker = address(100);
