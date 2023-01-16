@@ -8,4 +8,8 @@ remappings = [
     'forge-std/=lib/forge-std/src/',
     'openzeppelin-contracts/=lib/openzeppelin-contracts/contracts/',
 ]
+gas_reports = ["Fallback", "FallbackFactory"]
+
+
+
 # See more config options https://github.com/gakonst/foundry/tree/master/config
