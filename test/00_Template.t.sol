@@ -1,14 +1,13 @@
 pragma solidity ^0.8.10;
 
 import "ds-test/test.sol";
-import "../src/levels/04_Telephone/TelephoneHack.sol";
-import "../src/levels/04_Telephone/TelephoneFactory.sol";
+import "../src/levels/06_Delegation/DelegationFactory.sol";
 import "../src/core/Ethernaut.sol";
 import "./utils/vm.sol";
 import "forge-std/console.sol";
 
 
-contract TelephoneTest is DSTest {
+contract TestTest is DSTest {
     Vm vm = Vm(address(0x7109709ECfa91a80626fF3989D68f67F5b1DD12D));
     Ethernaut ethernaut;
     address attacker = address(100);
@@ -21,22 +20,23 @@ contract TelephoneTest is DSTest {
         vm.deal(attacker, 5 ether);
     }
 
-    function testTelephoneHack() public {
+    function testTestHack() public {
         /////////////////
         // LEVEL SETUP //
         /////////////////
 
-        TelephoneFactory telephoneFactory = new TelephoneFactory();
-        ethernaut.registerLevel(telephoneFactory);
+        TestFactory testFactory = new TestFactory();
+        ethernaut.registerLevel(testFactory);
         // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called
         vm.startPrank(attacker);
-        address levelAddress = ethernaut.createLevelInstance(telephoneFactory);
-        Telephone ethernautTelephone = Telephone(payable(levelAddress));
+        address levelAddress = ethernaut.createLevelInstance(testFactory);
+        Test ethernautTest = Delegation(payable(levelAddress));
 
         //////////////////
         // LEVEL ATTACK //
         //////////////////
  
+
 
         //////////////////////
         // LEVEL SUBMISSION //
