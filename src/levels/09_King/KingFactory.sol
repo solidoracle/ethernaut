@@ -12,7 +12,7 @@ contract KingFactory is Level {
   function createInstance(address _player) override public payable returns (address) {
     _player;
     require(msg.value >= insertCoin);
-    return address((new King){value: msg.value}()); // .value is deprecataed
+    return address((new King){value: msg.value}()); // .value is deprecated
   }
 
   function validateInstance(address payable _instance, address _player) override public returns (bool) {
