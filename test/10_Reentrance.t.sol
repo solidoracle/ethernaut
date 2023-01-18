@@ -40,9 +40,6 @@ contract ReentranceTest is DSTest {
         ReentranceHack reentranceHack = new ReentranceHack(payable(levelAddress));
         reentranceHack.attack{value: 1 ether}();
 
-        console.log(address(ethernautReentrance).balance);
-        console.log(ethernautReentrance.balances(address(reentranceHack)));
-
         //////////////////////
         // LEVEL SUBMISSION //
         //////////////////////
