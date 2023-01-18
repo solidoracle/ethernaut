@@ -3,7 +3,7 @@
 pragma solidity ^0.8.10;
 
 interface IKing {
-    function changeOwner(address _owner) external;
+    function dummy(address _owner) external;
 }
 
 contract KingHack {
