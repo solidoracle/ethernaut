@@ -16,7 +16,7 @@ contract VaultTest is DSTest {
     function setUp() public {
         // Setup instance of the Ethernaut contract
         ethernaut = new Ethernaut();
-        // Deal EOA address some ether
+        // Deal attacker address some ether
         vm.deal(attacker, 5 ether);
     }
 
