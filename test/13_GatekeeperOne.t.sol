@@ -26,7 +26,6 @@ contract GatekeeperOneTest is DSTest {
         GatekeeperOneFactory gatekeeperOneFactory = new GatekeeperOneFactory();
         ethernaut.registerLevel(gatekeeperOneFactory);
         // Sets all subsequent calls' msg.sender to be the tx.origin address until `stopPrank` is called
-        // TODO: WHY??
         vm.startPrank(tx.origin);
         console.log(tx.origin);
         address levelAddress = ethernaut.createLevelInstance(gatekeeperOneFactory);
