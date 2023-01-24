@@ -22,6 +22,7 @@ contract AlienCodex is Ownable {
   }
 
   function retract() contacted public {
+    // reduces the array by 1 slot
     codex.length--;
   }
 
