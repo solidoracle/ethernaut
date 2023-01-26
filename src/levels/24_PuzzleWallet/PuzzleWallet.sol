@@ -2,7 +2,7 @@
 pragma solidity ^0.8.10;
 pragma experimental ABIEncoderV2;
 
-import "openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
+import "lib/openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import "./openzeppelin/UpgradeableProxy.sol";
 
 contract PuzzleProxy is UpgradeableProxy {
