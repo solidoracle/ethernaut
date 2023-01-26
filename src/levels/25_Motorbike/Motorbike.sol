@@ -13,7 +13,7 @@ contract Motorbike {
         address value;
     }
     
-    // Initializes the upgradeable proxy with an initial implementation specified by `_logic`.
+    // Initializes the upgradeable proxy (Motorbike) with an initial implementation contract specified by `_logic`.
     constructor(address _logic)  {
         require(Address.isContract(_logic), "ERC1967: new implementation is not a contract");
         _getAddressSlot(_IMPLEMENTATION_SLOT).value = _logic;
@@ -42,7 +42,7 @@ contract Motorbike {
         _delegate(_getAddressSlot(_IMPLEMENTATION_SLOT).value);
     }
     
-    // Returns an `AddressSlot` with member `value` located at `slot`.
+    // Returns an `AddressSlot` with member `value` located at `slot`. that is called above in the constructor
     function _getAddressSlot(bytes32 slot) internal pure returns (AddressSlot storage r) {
         assembly {
             r.slot := slot
