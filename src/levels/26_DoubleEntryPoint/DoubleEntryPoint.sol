@@ -29,7 +29,9 @@ contract Forta is IForta {
 
   function notify(address user, bytes calldata msgData) external override {
     if(address(usersDetectionBots[user]) == address(0)) return;
+
     try usersDetectionBots[user].handleTransaction(user, msgData) {
+            // msg.data here is different from msgData passed in as an argument
         return;
     } catch {}
   }

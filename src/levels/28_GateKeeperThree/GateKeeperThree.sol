@@ -40,6 +40,7 @@ contract GatekeeperThree {
   }
 
   modifier gateOne() {
+    // owner must be the contract that calls the transaction
     require(msg.sender == owner);
     require(tx.origin != owner);
     _;
