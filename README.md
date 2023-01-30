@@ -20,7 +20,7 @@ foundryup
 
 Advanced ways to use `foundryup`, and other documentation, can be found in the [foundryup package](./foundryup/README.md)
 
-2. **Code your solutions in the provided `[NAME_OF_THE_LEVEL].t.sol` files (inside each level's folder in the test folder)**
+2. **Code your solutions in the provided `[NAME_OF_THE_LEVEL].t.sol` files (inside the test folder)**
 
 3. **Run tests**
 
